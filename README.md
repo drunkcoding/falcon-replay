@@ -53,6 +53,6 @@ make
 
 ```bash
 # replay data from file
-./falcon_replay --csv_path ../data/dci_20221027_1243_EDI.csv --ip 127.0.0.1 --port 5000
+./falcon_replay --csv_path ../data/dci_20221027_1243_EDI.csv --ip 127.0.0.1 --port 5000 --count 100
 ./simple_udp_server --ip 127.0.0.1 --port 5000
 ```
