@@ -25,10 +25,17 @@ FetchContent_Declare(
   GIT_SHALLOW ON
 )
 
-FetchContent_MakeAvailable(gflags rapidcsv)
+FetchContent_Declare(
+  csv2
+  GIT_REPOSITORY https://github.com/p-ranav/csv2.git
+  GIT_TAG v0.1
+  GIT_SHALLOW ON
+)
+
+FetchContent_MakeAvailable(gflags rapidcsv csv2)
 
 # Add denbug flag
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Wpedantic -Werror -ggdb3 -O0")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Wpedantic -Werror -O3")
 
 file(GLOB ALL_SRC src/*.cc)
 file(GLOB ALL_INC src/*.h)
@@ -38,14 +45,16 @@ add_executable(falcon_replay falcon_replay.cc)
 target_include_directories(falcon_replay PRIVATE 
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   rapidcsv
+  csv2
 )
-target_link_libraries(falcon_replay PRIVATE gflags rapidcsv)
+target_link_libraries(falcon_replay PRIVATE gflags rapidcsv csv2)
 
 add_executable(simple_udp_server simple_udp_server.cc)
 target_include_directories(simple_udp_server PRIVATE 
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   rapidcsv
+  csv2
 )
-target_link_libraries(simple_udp_server PRIVATE gflags rapidcsv)
+target_link_libraries(simple_udp_server PRIVATE gflags rapidcsv csv2)
 
 
