@@ -41,7 +41,7 @@ main(int argc, char** argv)
     auto timestamp_str = parser.GetColumn("timestamp");
 
     std::vector<std::uint32_t> tbs;
-    std::vector<std::uint32_t> timestamp;
+    std::vector<std::uint64_t> timestamp;
 
     for (auto& s : tbs_str) {
       tbs.push_back(std::stoul(s) / 8);
