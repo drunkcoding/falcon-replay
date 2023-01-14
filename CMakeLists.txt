@@ -50,11 +50,9 @@ target_include_directories(falcon_replay PRIVATE
 target_link_libraries(falcon_replay PRIVATE gflags rapidcsv csv2)
 
 add_executable(simple_udp_server simple_udp_server.cc)
-target_include_directories(simple_udp_server PRIVATE 
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  rapidcsv
-  csv2
-)
-target_link_libraries(simple_udp_server PRIVATE gflags rapidcsv csv2)
+target_link_libraries(simple_udp_server PRIVATE gflags)
+
+add_executable(simple_udp_client simple_udp_client.cc)
+target_link_libraries(simple_udp_client PRIVATE gflags)
 
 
